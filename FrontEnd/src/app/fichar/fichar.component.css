@@ -1,0 +1,36 @@
+.contenedor{
+    margin-top:2.5rem;
+}
+.titulo{
+    text-align: center;
+    margin-bottom:1.2rem;
+    color:#006563;
+    font-size:1.5rem;
+}
+
+.listado{
+    background-color:white;
+    padding:2rem 2rem;
+    max-height: 560px;
+    overflow-y: auto;
+}
+
+.contenedor2{
+    background-color:white;
+    padding:2rem 2rem;
+    max-width:550px;
+    margin:0 auto;
+    margin-bottom:2rem !important;
+}
+
+.elem{
+    padding:1rem 0;
+}
+
+.elem .componente{
+    padding:0.8rem 0.6rem;
+    box-shadow: 0px 10px 5px #f2f2f2;
+}
+
+
+

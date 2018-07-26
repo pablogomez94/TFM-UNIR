@@ -1,0 +1,29 @@
+.DateContainer{
+    color:#f2f2f2;
+    background:#00f0be;
+    padding: 1% 2%;
+}
+a{
+    color:#fff !important;
+    text-decoration: underline !important;
+}
+a:hover{
+    color:#f2f2f2;
+    cursor:pointer;
+}
+.visorMap{
+width:100%;
+height:300px;
+
+}
+
+.fixedContainer{
+    background:#f2f2f2;
+ 
+    position:sticky;
+    top:0;
+    width:100%;
+    margin-bottom:3rem;
+   
+
+}

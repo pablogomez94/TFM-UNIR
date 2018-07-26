@@ -1,0 +1,54 @@
+<div style="width:100%;height:50px;background:#00f0be;">
+  <h6 style="padding:1rem 2.3rem"><a href="./fichar">Volver</a></h6>
+</div>
+<div class="fixedContainer" style="z-index:100">
+<div style=" background:#00f0be;width:100%;">
+  <div class="row" style="margin:0 auto;max-width:600px;background:#00f0be">
+    <div class="col">
+      Fecha de Inicio
+      <my-date-picker name="mydate" [options]="myDatePickerOptions"
+      [(ngModel)]="model" (dateChanged)="cambiarFecha1($event,0)"></my-date-picker>
+    </div>
+    <div class="col">
+      Fecha de Fin
+      <my-date-picker name="mydate" [options]="myDatePickerOptions"
+      [(ngModel)]="model2" (dateChanged)="cambiarFecha1($event,1)"></my-date-picker>
+    </div>
+  </div>
+  <br>
+</div>
+<div class="fixedContainer">
+  <app-map [longitud]="longitud" [latitud]="latitud" [ubicacion]="ubicacion" [accurate]="accurate"></app-map> 
+</div>
+</div>
+
+<div  style="margin:0 auto;max-width:900px;margin-bottom:4rem;background:#00B08E;padding:1rem">
+<strong>Total trabajado teórico: </strong><label style="color:#f2f2f2">{{totalTrabajado()}}</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<strong>Total trabajado real: </strong><label style="color:#f2f2f2">{{totalReal()}}</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<strong>Diferencia: </strong><label *ngIf="diferenciaTotal()>=0" style="color:green">{{diferenciaTotal()}} minutos</label>
+<label *ngIf="diferenciaTotal()<0" style="color:red">{{diferenciaTotal()}} minutos</label>
+</div>
+
+<div class="list-group" style="margin:0 auto;max-width:900px;margin-bottom:4rem">
+  
+  
+  <div  *ngFor="let evento of eventos;let indice2=index;" style="margin-bottom:1rem">
+    <div  class="DateContainer">
+      {{(evento.dia*1000) |date:"dd/MM/yyyy"}} &nbsp; &nbsp;
+      <label style="color:red;" *ngIf="evento.TrabajadoR==-1">Eventos erróneos o jornada incompleta (no se pudo calcular el tiempo)</label>
+      <label *ngIf="evento.TrabajadoR!=-1">Tiempo de trabajo: {{(evento.TrabajadoT-3600)*1000 |date:"HH:mm:ss"}} 
+        - Tiempo trabajado: {{(evento.TrabajadoR-3600)*1000 |date:"HH:mm:ss"}} &nbsp;&nbsp;&nbsp;&nbsp; Diferencia: <label *ngIf="(evento.TrabajadoR-evento.TrabajadoT)>=0" style="color:green;">{{diferencia(evento.TrabajadoR,evento.TrabajadoT)}} minutos</label><label *ngIf="(evento.TrabajadoR-evento.TrabajadoT)<0" style="color:red">{{evento.TrabajadoR-evento.TrabajadoT}} minutos</label></label>
+   
+    </div>
+    
+    <ul class="list-group">
+      <li class="list-group-item"   *ngFor="let fichaje of eventos[indice2].eventos" (click)="asignarCoordenadas(fichaje.Ubicacion)">
+       <img src="../assets/{{fichaje.nombreEvento}}.png" style="max-height:40px">
+        Evento: <strong style="margin-right:2%">{{fichaje.nombreEvento}} <label *ngIf="fichaje.nombreEvento=='ECliente' && fichaje.cliente!=''"> ({{fichaje.cliente}}) </label></strong> Realizado: <strong style="margin-right:2%">{{fichaje.fecha*1000|date:"HH:mm"}}</strong> 
+       <label style="text-decoration:underline;color:#00f0be;cursor:pointer">Ubicación</label>
+      </li> 
+    </ul>  
+    
+  </div>
+</div>
+

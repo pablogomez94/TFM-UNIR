@@ -1,0 +1,209 @@
+
+<div style="width:100%;height:50px;background:transparent;">
+  <h6 style="padding:1rem 2.3rem;color:#00f0be;"><a href="./fichar">Volver</a></h6>
+</div>
+<div class="form-group" style="margin:0 auto;max-width:750px;background:#00f0c2;padding:2%">
+  <label for="exampleFormControlSelect1">Horario</label>
+  <select class="form-control" id="exampleFormControlSelect1"  #DDLhorarios (change)="obtenerJornadas(DDLhorarios.value)">
+    <option  value="0">Nuevo Horario</option>
+    <option *ngFor="let h of horarios" [value]="h.id" >{{h.Nombre}}</option>
+    
+  </select>
+</div>
+<br>
+<div class="form-group" style="margin:0 auto;max-width:750px;background:white;padding:2%">
+    <label>Nombre </label>
+    <input class="form-control" [(ngModel)]="horSelec" type="text">
+</div>
+<div style="margin:0 auto;max-width:750px;background:white;padding:2%">
+
+  <h5>Lunes</h5><br>
+  <div class="form-group">
+      <label>Tiempo trabajado (Segundos)</label>
+      <input class="form-control" (input)="tiempoValido(jornadas[0].TTrabajo,1)" [(ngModel)]="jornadas[0].TTrabajo" type="text" style="max-width:280px">
+  </div>
+ 
+  <label>Hora de inicio y fin:</label>
+  <div class="row">
+    <div class="col-5">
+      <input class="form-control" type="time" #DDL1 [ngModel]="(jornadas[0].Inicio-3600)*1000 |date:'HH:mm'" (focusout)="cambiarhora(0,DDL1.value,'I')"/>
+    </div>
+    <div class="col-2" style="text-align:center;">
+      -
+    </div>
+    <div class="col-5">
+        <input class="form-control" type="time" #DDL2 [ngModel]="(jornadas[0].Fin-3600)*1000 |date:'HH:mm'" (focusout)="cambiarhora(0,DDL2.value,'F')"/>      
+    </div>
+  </div>
+  <br><label>Tiempo de gracia</label>
+  <input class="form-control" type="range" min="0" max="7200" [(ngModel)]="jornadas[0].Gracia">{{jornadas[0].Gracia}} s
+  
+  <hr>
+</div>
+
+<div style="margin:0 auto;max-width:750px;background:white;padding:2%">
+  
+  <h5>Martes</h5><br>
+  <div class="form-group">
+      <label>Tiempo trabajado (Segundos)</label>
+      <input class="form-control" (input)="tiempoValido(jornadas[1].TTrabajo,2)"  [(ngModel)]="jornadas[1].TTrabajo" type="text" style="max-width:280px">
+  </div>
+ 
+  <label>Hora de inicio y fin:</label>
+  <div class="row">
+    <div class="col-5">
+        <input class="form-control" type="time" #DDL3 [ngModel]="(jornadas[1].Inicio-3600)*1000 |date:'HH:mm:ss'" (focusout)="cambiarhora(1,DDL3.value,'I')"/>  
+    </div>
+    <div class="col-2" style="text-align:center;">
+      -
+    </div>
+    <div class="col-5">
+        <input class="form-control" type="time" #DDL4 [ngModel]="(jornadas[1].Fin-3600)*1000 |date:'HH:mm:ss'" (focusout)="cambiarhora(1,DDL4.value,'F')"/>  
+    </div>
+  </div>
+  <br><label>Tiempo de gracia</label>
+  <input class="form-control" type="range" min="0" max="7200" [(ngModel)]="jornadas[1].Gracia">{{jornadas[1].Gracia}} s
+  
+  <br><hr>
+</div>
+
+<div style="margin:0 auto;max-width:750px;background:white;padding:2%">
+  
+  <h5>Miércoles</h5><br>
+  <div class="form-group">
+      <label>Tiempo trabajado (Segundos)</label>
+      <input class="form-control" (input)="tiempoValido(jornadas[2].TTrabajo,3)"  [(ngModel)]="jornadas[2].TTrabajo" type="text" style="max-width:280px">
+  </div>
+ 
+  <label>Hora de inicio y fin:</label>
+  <div class="row">
+    <div class="col-5">
+        <input class="form-control" type="time" #DDL5 [ngModel]="(jornadas[2].Inicio-3600)*1000 |date:'HH:mm:ss'" (focusout)="cambiarhora(2,DDL5.value,'I')"/>  
+    </div>
+    <div class="col-2" style="text-align:center;">
+      -
+    </div>
+    <div class="col-5">
+        <input class="form-control" type="time" #DDL6 [ngModel]="(jornadas[2].Fin-3600)*1000 |date:'HH:mm:ss'" (focusout)="cambiarhora(2,DDL6.value,'F')"/>  
+      </div>
+  </div>
+  <br><label>Tiempo de gracia</label>
+  <input class="form-control" type="range" min="0" max="7200" [(ngModel)]="jornadas[2].Gracia">{{jornadas[2].Gracia}} s
+  
+  <br><hr>
+</div>
+
+<div style="margin:0 auto;max-width:750px;background:white;padding:2%">
+  
+  <h5>Jueves</h5><br>
+  <div class="form-group">
+      <label>Tiempo trabajado (Segundos)</label>
+      <input class="form-control" (input)="tiempoValido(jornadas[3].TTrabajo,4)"  [(ngModel)]="jornadas[3].TTrabajo" type="text" style="max-width:280px">
+  </div>
+ 
+  <label>Hora de inicio y fin:</label>
+  <div class="row">
+    <div class="col-5">
+        <input class="form-control" type="time" #DDL7 [ngModel]="(jornadas[3].Inicio-3600)*1000 |date:'HH:mm:ss'" (focusout)="cambiarhora(3,DDL7.value,'I')"/>  
+        
+    </div>
+    <div class="col-2" style="text-align:center;">
+      -
+    </div>
+    <div class="col-5">
+        <input class="form-control" type="time" #DDL8 [ngModel]="(jornadas[3].Fin-3600)*1000 |date:'HH:mm:ss'" (focusout)="cambiarhora(3,DDL8.value,'F')"/>     
+    </div>
+  </div>
+  <br><label>Tiempo de gracia</label>
+  <input class="form-control" type="range" min="0" max="7200" [(ngModel)]="jornadas[3].Gracia">{{jornadas[3].Gracia}} s
+  
+  <br><hr>
+</div>
+
+<div style="margin:0 auto;max-width:750px;background:white;padding:2%">
+    
+    <h5>Viernes</h5><br>
+    <div class="form-group">
+        <label>Tiempo trabajado (Segundos)</label>
+        <input class="form-control" (input)="tiempoValido(jornadas[4].TTrabajo,5)"  [(ngModel)]="jornadas[4].TTrabajo" type="text" style="max-width:280px">
+    </div>
+   
+    <label>Hora de inicio y fin:</label>
+    <div class="row">
+      <div class="col-5">
+          <input class="form-control" type="time" #DDL9 [ngModel]="(jornadas[4].Inicio-3600)*1000 |date:'HH:mm:ss'" (focusout)="cambiarhora(4,DDL9.value,'I')"/>  
+          
+      </div>
+      <div class="col-2" style="text-align:center;">
+        -
+      </div>
+      <div class="col-5">
+          <input class="form-control" type="time" #DDL10 [ngModel]="(jornadas[4].Fin-3600)*1000 |date:'HH:mm:ss'" (focusout)="cambiarhora(4,DDL10.value,'F')"/>  
+          
+      </div>
+    </div>
+    <br><label>Tiempo de gracia</label>
+    <input class="form-control" type="range" min="0" max="7200" [(ngModel)]="jornadas[4].Gracia">{{jornadas[4].Gracia}} s
+    
+    <br><hr>
+  </div>
+<div style="margin:0 auto;max-width:750px;background:white;padding:2%">
+  
+  <h5>Sábado</h5><br>
+  <div class="form-group">
+      <label>Tiempo trabajado (Segundos)</label>
+      <input class="form-control" (input)="tiempoValido(jornadas[5].TTrabajo,6)"  [(ngModel)]="jornadas[5].TTrabajo" type="text" style="max-width:280px">
+  </div>
+ 
+  <label>Hora de inicio y fin:</label>
+  <div class="row">
+    <div class="col-5">
+        <input class="form-control" type="time" #DDL11 [ngModel]="(jornadas[5].Inicio-3600)*1000 |date:'HH:mm:ss'" (focusout)="cambiarhora(5,DDL11.value,'I')"/>  
+        
+    </div>
+    <div class="col-2" style="text-align:center;">
+      -
+    </div>
+    <div class="col-5">
+        <input class="form-control" type="time" #DDL12 [ngModel]="(jornadas[5].Fin-3600)*1000 |date:'HH:mm:ss'" (focusout)="cambiarhora(5,DDL12.value,'F')"/>  
+        
+    </div>
+  </div>
+  <br><label>Tiempo de gracia</label>
+  <input class="form-control" type="range" min="0" max="7200" [(ngModel)]="jornadas[5].Gracia">{{jornadas[5].Gracia}} s
+  
+  <br><hr>
+</div>
+<div style="margin:0 auto;max-width:750px;background:white;padding:2%">
+  
+  <h5>Domingo</h5><br>
+  <div class="form-group">
+      <label>Tiempo trabajado (Segundos)</label>
+      <input class="form-control" (input)="tiempoValido(jornadas[6].TTrabajo,7)"  [(ngModel)]="jornadas[6].TTrabajo" type="text" style="max-width:280px">
+  </div>
+ 
+  <label>Hora de inicio y fin:</label>
+  <div class="row">
+    <div class="col-5">
+        <input class="form-control" type="time" #DDL13 [ngModel]="(jornadas[6].Inicio-3600)*1000 |date:'HH:mm:ss'" (focusout)="cambiarhora(6,DDL13.value,'I')"/>  
+        
+    </div>
+    <div class="col-2" style="text-align:center;">
+      -
+    </div>
+    <div class="col-5">
+        <input class="form-control" type="time" #DDL14 [ngModel]="(jornadas[6].Fin-3600)*1000 |date:'HH:mm:ss'" (focusout)="cambiarhora(6,DDL1.value,'F')"/>  
+    </div>
+  </div>
+  <br><label>Tiempo de gracia</label>
+  <input class="form-control" type="range" min="0" max="7200" [(ngModel)]="jornadas[6].Gracia">{{jornadas[6].Gracia}} s
+  
+  <br><hr>
+</div>
+
+<div style="margin:0 auto;max-width:750px;background:white;padding:2%;text-align:center">
+  <input [disabled]="horSelec=='' && (!v1 || !v2 || !v3 || !v4 || !v5 || !v6 || !v7)" *ngIf="DDLhorarios.value==0" type="button" class="btn btn-primary" (click)="insertar()" value="Insertar Horario">
+  <input [disabled]="horSelec=='' && (!v1 || !v2 || !v3 || !v4 || !v5 || !v6 || !v7)" *ngIf="DDLhorarios.value>0" type="button" class="btn btn-primary" value="actualizar" (click)="actualizar(DDLhorarios.value)">
+  <input [disabled]="horSelec==''" *ngIf="DDLhorarios.value>0 && borrable" type="button" class="btn btn-danger" (click)="borrar(DDLhorarios.value)" value="Borrar Horario">
+ <br><br> <label style="color:red" *ngIf="DDLhorarios.value>0 && !borrable">El horario solo podrá modificarse. No puede borrarse porque tiene usuarios asignados al mismo.</label>
+</div>

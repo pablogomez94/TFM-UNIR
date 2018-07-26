@@ -1,0 +1,19 @@
+<div *ngIf="longitud==undefined || latitud==undefined" style="text-align:center;background-position: center center;background-repeat: no-repeat;height:300px;background-image:url('../assets/maps/mapa_nolocaevento.jpg')"></div>
+
+<div *ngIf="!ubicacion" style="text-align:center;background-position: center center;background-repeat: no-repeat;height:300px;background-image:url('../assets/maps/mapa_noexiste.jpg')">
+</div>
+<div *ngIf="!accurate && ubicacion" style="text-align:center;background-position: center center;background-repeat: no-repeat;height:300px;background-image:url('../assets/maps/mapa_cargando.jpg')">
+</div>
+<div *ngIf="accurate && ubicacion && (longitud!=undefined && latitud!=undefined)">
+  <agm-map [streetViewControl]="false" [zoomControl]="false" [disableDefaultUI]="true" [zoom]="16" [mapTypeId]="'roadmap'" [latitude]="latitud" [longitude]="longitud" style="height:300px;width:100%">
+    <agm-marker [iconUrl]="{url:'../../assets/logo.png',scaledSize:{width:35,height:35}}"  [latitude]="latitud" [longitude]="longitud">
+    </agm-marker>
+    <!-- <agm-polyline   [strokeColor]="red">
+      <agm-polyline-point  [latitude]="latitud" [longitude]="longitud">
+      </agm-polyline-point>
+      <agm-polyline-point  [latitude]="-3" [longitude]="4">
+      </agm-polyline-point>
+    </agm-polyline>-->
+  </agm-map>
+  <br>
+</div>

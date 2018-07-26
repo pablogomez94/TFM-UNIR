@@ -1,0 +1,20 @@
+<div class="alert alert-danger" role="alert" *ngIf="err" style="position:absolute;top:0px;width:100%">
+  {{errmsg}}
+</div>
+
+<div class="text-center align" style="    padding-bottom:40px;padding-top:40px;">
+<form class="form-signin">
+  <img class="mb-4" src="../../assets/logo.png" alt="" width="120px" style="margin-bottom:3rem !important;margin-top:3rem !important">
+  <h1 class="h3 mb-3 font-weight-normal">Iniciar Sesión</h1><br>
+  <label for="inputEmail" class="sr-only">Nombre de usuario</label>
+  <input type="email" id="inputEmail" class="form-control" [(ngModel)]="user" name="usuario" placeholder="Nombre de usuario" required autofocus>
+  <label for="inputPassword" class="sr-only">Password</label>
+  <input type="password" id="inputPassword" class="form-control" [(ngModel)]="pass" name="contrasenia" placeholder="Contraseña" required>
+  <button *ngIf="!cargando" class="btn btn-lg btn-primary btn-block" type="submit" (click)="Login()">Iniciar Sesión</button>
+  <div *ngIf="cargando" style="margin:0 auto;width:50px;padding-top:2rem;">
+      <img src="../../assets/charge.gif" style="width:100%">
+  </div>
+  <p class="mt-5 mb-3 text-muted">Pablo Gómez Hernández &copy; 2018</p>
+</form>
+</div>
+<footer style="width:100%;margin-top:3rem;text-align:center;"><a href='github.com'>Code in Github.com</a></footer>

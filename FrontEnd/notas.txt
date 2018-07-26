@@ -1,0 +1,41 @@
+crear en app un archivo llamado app.routing.ts
+
+En app.routing.ts:
+    import {ModuleWithProviders} from '@angular/core';
+    import {Routes,RouterModule} from '@angular/router';
+
+    //importar lost componentes
+
+
+    const appRoutes: Routes =[
+        {path:'',component:componente},
+        {path:'**',component:componente}
+    ];
+
+    //exportar
+    export const appRoutingProviders: any[]=[];
+    export const routing: ModuleWithProviders=RouterModule.forRoot(appRoutes);
+
+en app.module.ts:
+    import{routing,appRoutingProviders} from './app.routing';
+    import{HttpModule} from '@angular/http';
+    import{FormsModule} from '@angular/forms';
+
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpModule,
+        routing
+    ],
+
+    providers: [appRoutingProviders],
+
+en app.components.ts:
+    import{Router,ActivatedRoute,Params} from '@angular/router';
+en app.component.html:
+import{Router,ActivatedRoute,Params} from '@angular/router';
+
+----------------
+
+ir añadiendo los componentes en app.routing
+ir añadiendo los componentes a declarations en app.module.ts

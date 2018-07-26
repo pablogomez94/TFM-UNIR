@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+/*@import url("css/960.css");
+@import url("css/reset.css");
+@import url("css/text.css");*/
+
+.btn-primary{
+    background-color:#00CBC9 !important;
+    border: #00E4DF !important;
+}
+
+.btn-primary:hover{
+    background-color:#00E4DF !important;
+    border: #00CBC9 !important;
+}
+
+body{
+    background-color:#f2f2f2 !important;
+}
